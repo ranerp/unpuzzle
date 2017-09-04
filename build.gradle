@@ -26,11 +26,11 @@ if( !hasProperty( 'bintrayUser' ) )
 if( !hasProperty( 'bintrayKey' ) )
   ext.bintrayKey = ''
 
-task('build')
+task('buildCustom')
 
 task('buildExamples', type: GradleBuild) { task ->
   dir = file('examples')
-  tasks = [ 'build' ]
+  tasks = [ 'buildCustom' ]
 }
 
 // build.finalizedBy buildExamples
@@ -43,7 +43,7 @@ task('cleanExamples', type: GradleBuild) { task ->
 // clean.dependsOn cleanExamples
 
 task('wrapper', type: Wrapper) {
-  gradleVersion = '2.3'
+  gradleVersion = '4.1'
 }
 
 artifactory {
